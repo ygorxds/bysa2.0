@@ -178,6 +178,12 @@
                      <div class="Testimonial_box">
                         <i><img src="images/plan1.png" alt="#"/></i>
                      </div>
+                     <div class="col-md-12">
+                        <ul class="social_icon">
+                           <li><a href="https://github.com/ygorxds"><i class="fa fa-github" aria-hidden="true"></i></i></a></li>
+                           <li><a href="https://www.linkedin.com/in/ygorpsa/"><i class="fa fa-linkedin" aria-hidden="true"></i></i></a></li>
+                        </ul>
+                     </div>
                   </div>
                   <div class="col-md-9">
                      <div class="Testimonial_box">
@@ -193,44 +199,41 @@
      
       <!-- end Testimonial -->
       <!-- contact -->
-      <div id="contact" class="contact">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-12">
-                  <div class="titlepage">
-                     <h2>Fale com a nossa equipe</h2>
-                     <span>Estaremos a disposição para te atender </span>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <div class="container">
-            <div class="row">
-               <div class="col-md-12 ">
-                  <form class="main_form ">
-                     <div class="row">
-                        <div class="col-md-12 ">
-                           <input class="form_contril" placeholder="Name " type="text" name="Name ">
-                        </div>
-                        <div class="col-md-12">
-                           <input class="form_contril" placeholder="Phone Number" type="text" name=" Phone Number">
-                        </div>
-                        <div class="col-md-12">
-                           <input class="form_contril" placeholder="Email" type="text" name="Email">
-                        </div>
-                        <div class="col-md-12">
-                           <textarea class="textarea" placeholder="Message" type="text" name="Message"></textarea>
-                        </div>
-                        <div class="col-sm-12">
-                           <button class="send_btn">Send</button>
-                        </div>
-                     </div>
-                  </form>
-               </div>
+<div id="contact" class="contact">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-12">
+            <div class="titlepage">
+               <h2>Fale com a nossa equipe</h2>
+               <span>Estaremos a disposição para te atender </span>
             </div>
          </div>
       </div>
-      <!-- end contact -->
+   </div>
+   <div class="container">
+      <div class="row">
+         <div class="col-md-12 ">
+            <form class="main_form" onsubmit="return sendMail()">
+               <div class="row">
+                  <div class="col-md-12 ">
+                     <input class="form_contril" placeholder="Nome" type="text" name="Nome" id="nome">
+                  </div>
+                  <div class="col-md-12">
+                     <input class="form_contril" placeholder="Email" type="text" name="Email" id="email">
+                  </div>
+                  <div class="col-md-12">
+                     <textarea class="textarea" placeholder="Mensagem" type="text" name="Mensagem" id="mensagem"></textarea>
+                  </div>
+                  <div class="col-sm-12">
+                     <button class="send_btn" type="submit">Enviar</button>
+                  </div>
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>
+</div>
+<!-- end contact -->
       <!--  footer -->
       <footer>
          <div class="footer">
@@ -245,9 +248,10 @@
                   </div>
                   <div class="col-md-12">
                      <ul class="social_icon">
-                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></i></a></li>
+                        <li><a href="https://www.facebook.com/bysadigital"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="https://www.instagram.com/bysaconsulting/"><i class="fa fa-instagram" aria-hidden="true"></i></i></a></li>
+                        <li><a href="https://wa.me/5521966939174"><i class="fa fa-whatsapp" aria-hidden="true"></i></i></a></li>
+                        <li><a href="https://www.linkedin.com/company/bysa-consulting/"><i class="fa fa-linkedin" aria-hidden="true"></i></i></a></li>
                      </ul>
                   </div>
                </div>
@@ -265,6 +269,34 @@
       </footer>
       <!-- end footer -->
       <!-- Javascript files-->
+
+      <script type="text/javascript">
+   (function(){
+      emailjs.init("SEU_USER_ID");
+   })();
+ 
+   function sendMail() {
+      var nome = document.getElementById("nome").value;
+      var email = document.getElementById("email").value;
+      var mensagem = document.getElementById("mensagem").value;
+ 
+      var templateParams = {
+         from_name: nome,
+         to_name: "SEU_NOME",
+         message: mensagem,
+         reply_to: email,
+      };
+ 
+      emailjs.send("SEU_SERVICE_ID", "SEU_TEMPLATE_ID", templateParams)
+      .then(function(response) {
+         console.log("SUCCESS", response);
+      }, function(error) {
+         console.log("FAILED", error);
+      });
+      return false;
+   }
+</script>
+
       <script src="js/jquery.min.js"></script>
       <script src="js/popper.min.js"></script>
       <script src="js/bootstrap.bundle.min.js"></script>
