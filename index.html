@@ -276,6 +276,7 @@
    })();
  
    function sendMail() {
+      try{
       var nome = document.getElementById("nome").value;
       var email = document.getElementById("email").value;
       var mensagem = document.getElementById("mensagem").value;
@@ -294,6 +295,9 @@
          console.log("FAILED", error);
       });
       return false;
+   }catch{
+      alert('Erro no envio da sua mensagem, entre em contato pelo whatsapp, estamos trabalhando para normalizar esse módulo')
+   }
    }
 </script>
 
